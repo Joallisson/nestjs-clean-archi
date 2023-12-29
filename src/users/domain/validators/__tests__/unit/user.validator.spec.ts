@@ -1,4 +1,4 @@
-import { UserProps } from "@/users/domain/entities/user.entity"
+import { UserEntity, UserProps } from "@/users/domain/entities/user.entity"
 import { UserRules, UserValidator, UserValidatorFactory } from "../../user.validator"
 import { UserDataBuilder } from "@/users/domain/testing/helpers/user-data-builder"
 
