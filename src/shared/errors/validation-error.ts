@@ -1,9 +1,9 @@
-import { FieldsErros } from "../domain/validators/validator-fields.interface";
+import { FieldsErros } from '../domain/validators/validator-fields.interface'
 
-export class ValidationError extends Error{}
+export class ValidationError extends Error {}
 
-export class EntityValidationError extends Error{
-  constructor(public error: FieldsErros){
+export class EntityValidationError extends Error {
+  constructor(public error: FieldsErros) {
     super('Entity Validation Error')
     this.name = 'EntityValidationError'
   }

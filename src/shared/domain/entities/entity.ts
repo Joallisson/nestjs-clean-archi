@@ -1,23 +1,22 @@
-import {v4 as uuid} from 'uuid'
+import { v4 as uuid } from 'uuid'
 
-export abstract class Entity<Props = any>{
+export abstract class Entity<Props = any> {
   public readonly _id: string
   public readonly props: Props
 
-  constructor(props: Props, id?: string){
+  constructor(props: Props, id?: string) {
     this.props = props
-    this._id =  id || uuid()
+    this._id = id || uuid()
   }
 
-  get id(){
+  get id() {
     return this._id
   }
 
-  toJSON(): Required<{id: string} & Props>{
+  toJSON(): Required<{ id: string } & Props> {
     return {
       id: this._id,
-      ...this.props
-    } as Required<{id: string} & Props>
+      ...this.props,
+    } as Required<{ id: string } & Props>
   }
-
 }
