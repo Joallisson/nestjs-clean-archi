@@ -32,9 +32,20 @@ describe('UserInMemoryRepository unit tests', () => {
     )
   })
 
-  it('Should find an entity by email - findByEmail method', async () => {
+  it('Should not throw an error when not find an email - emailExists method', async () => {
     expect.assertions(0)
     await sut.emailExists('a@a.com')
   })
 
+  it('Should filter name field using filter param', async () => {
+    const items = [
+      new UserEntity(UserDataBuilder({name: 'Test'})),
+      new UserEntity(UserDataBuilder({name: 'TEST'})),
+      new UserEntity(UserDataBuilder({name: 'fake'})),
+    ]
+    const spyFilter = jest.spyOn(items, 'filter')
+    const itemsFiltered = await sut['applyFilter'](items, 'TEST')
+    expect(spyFilter).toHaveBeenCalled()
+    expect(itemsFiltered).toStrictEqual([items[0], items[1]])
+  })
 })
