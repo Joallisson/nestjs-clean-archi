@@ -15,7 +15,7 @@ export namespace DeleteUserUseCase{
     ){}
 
     async execute(input: Input): Promise<Output>{
-      await this.userRepository.findById(input.id)
+      await this.userRepository.delete(input.id)
     }
   }
 }
