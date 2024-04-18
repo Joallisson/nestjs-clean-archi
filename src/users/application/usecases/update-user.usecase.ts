@@ -22,7 +22,7 @@ export namespace UpdateUserUseCase{
         throw new BadRequestError('Name not provided')
       }
       const entity = await this.userRepository.findById(input.id)
-      entity.update(input.id)
+      entity.update(input.name)
       await this.userRepository.update(entity)
       return UserOutputMapper.toOutput(entity)
     }
