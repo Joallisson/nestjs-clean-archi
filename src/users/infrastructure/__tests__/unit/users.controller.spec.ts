@@ -4,6 +4,8 @@ import { SignupUseCase } from '@/users/application/usecases/signup.usecase';
 import { SignupDto } from '../../dtos/signup.dto';
 import { SigninUseCase } from '@/users/application/usecases/signin.usecase';
 import { SigninDto } from '../../dtos/signin.dto';
+import { UpdateUserUseCase } from '@/users/application/usecases/update-user.usecase';
+import { UpdateUserDto } from '../../dtos/update-user.dto';
 
 describe('UsersController unit tests', () => {
   let sut: UsersController
@@ -42,18 +44,19 @@ describe('UsersController unit tests', () => {
     expect(mockSignupUseCase.execute).toHaveBeenCalledWith(input)
   });
 
-  it('should authenticate a user', async () => {
-    const output: SigninUseCase.Output = props
-    const mockSigninUseCase = {
+  it('should update a user', async () => {
+    const output: UpdateUserUseCase.Output = props
+    const mockUpdateUserUseCase = {
       execute: jest.fn().mockReturnValue(Promise.resolve(output))
     }
-    sut['signinUseCase'] = mockSigninUseCase as any
-    const input: SigninDto = {
-      email: 'a@a.com',
-      password: '1234',
+    sut['updateUserUseCase'] = mockUpdateUserUseCase as any
+    const input: UpdateUserDto = {
+      name: 'New name',
     }
-    const result = await sut.login(input)
+    const result = await sut.update(id, input)
     expect(output).toStrictEqual(result);
-    expect(mockSigninUseCase.execute).toHaveBeenCalledWith(input)
+    expect(mockUpdateUserUseCase.execute).toHaveBeenCalledWith({id, ...input})
   });
+
+
 });
