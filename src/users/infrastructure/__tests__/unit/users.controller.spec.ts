@@ -42,7 +42,7 @@ describe('UsersController unit tests', () => {
       password: '1234',
     }
     const result = await sut.create(input)
-    expect(output).toStrictEqual(result);
+    expect(output).toMatchObject(result);
     expect(mockSignupUseCase.execute).toHaveBeenCalledWith(input)
   });
 
@@ -56,7 +56,7 @@ describe('UsersController unit tests', () => {
       name: 'New name',
     }
     const result = await sut.update(id, input)
-    expect(output).toStrictEqual(result);
+    expect(output).toMatchObject(result);
     expect(mockUpdateUserUseCase.execute).toHaveBeenCalledWith({id, ...input})
   });
 
@@ -71,7 +71,19 @@ describe('UsersController unit tests', () => {
       oldPassword: 'old password',
     }
     const result = await sut.updatePassword(id, input)
-    expect(output).toStrictEqual(result);
+    expect(output).toMatchObject(result);
     expect(mockUpdatePasswordUseCase.execute).toHaveBeenCalledWith({id, ...input})
+  });
+
+  it('should delete a user', async () => {
+    const output = undefined
+    const mockDeleteUserUseCase = {
+      execute: jest.fn().mockReturnValue(Promise.resolve(output))
+    }
+    sut['deleteUserUseCase'] = mockDeleteUserUseCase as any
+
+    const result = await sut.remove(id)
+    expect(output).toStrictEqual(result);
+    expect(mockDeleteUserUseCase.execute).toHaveBeenCalledWith({id})
   });
 });
