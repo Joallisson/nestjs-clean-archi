@@ -88,7 +88,7 @@ describe('UserPrismarepository integration tests', () => {
             ...element,
             name: `User${index}`,
             email: `test${index}@mail.com`,
-            createdAt: new Date(createdAt.getTime() + 1),
+            createdAt: new Date(createdAt.getTime() + index),
           })
         )
       })
@@ -98,6 +98,7 @@ describe('UserPrismarepository integration tests', () => {
       })
 
       const searchOutput = await sut.search(new UserRepository.SearchParams())
+      const items = searchOutput.items
 
       expect(searchOutput).toBeInstanceOf(UserRepository.SearchResult)
       expect(searchOutput.total).toBe(16)
@@ -105,6 +106,9 @@ describe('UserPrismarepository integration tests', () => {
       searchOutput.items.forEach(item => {
         expect(item).toBeInstanceOf(UserEntity)
       })
+      items.reverse().forEach((item, index) => {
+        expect(`test${index + 1}@mail.com`).toBe(item.email)
+      });
     })
   })
 })
