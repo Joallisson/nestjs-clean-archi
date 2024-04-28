@@ -150,7 +150,7 @@ describe('UserPrismarepository integration tests', () => {
     )
   })
 
-  it('should not finds a entity by email', async () => {
+  it('should not finds an entity by email', async () => {
     expect.assertions(0)
     await sut.emailExists('a@a.com')
   })
