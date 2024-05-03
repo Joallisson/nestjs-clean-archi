@@ -12,7 +12,7 @@ describe('CollectionPresenter unit tests', () => {
 
   beforeEach(() => {
     sut = new StubCollectionPresenter({
-      currentpage: 1,
+      currentPage: 1,
       perPage: 2,
       lastPage: 2,
       total: 4
@@ -22,7 +22,7 @@ describe('CollectionPresenter unit tests', () => {
   describe('constructor', () => {
     it('should set values', () => {
       expect(sut['paginationPresenter']).toBeInstanceOf(PaginationPresenter);
-      expect(sut['paginationPresenter'].currentpage).toBe(1);
+      expect(sut['paginationPresenter'].currentPage).toBe(1);
       expect(sut['paginationPresenter'].lastPage).toBe(2);
       expect(sut['paginationPresenter'].perPage).toBe(2);
       expect(sut['paginationPresenter'].total).toBe(4);
@@ -34,7 +34,7 @@ describe('CollectionPresenter unit tests', () => {
     expect(output).toStrictEqual({
       data: [1, 2, 3],
       meta: {
-        currentpage: 1,
+        currentPage: 1,
         perPage: 2,
         lastPage: 2,
         total: 4

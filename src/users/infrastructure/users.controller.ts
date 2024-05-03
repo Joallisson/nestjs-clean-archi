@@ -25,6 +25,7 @@ import { ListUsersDto } from './dtos/list-users.dto'
 import { UpdatePasswordDto } from './dtos/update-password.dto'
 import { UserOutput } from '../application/dtos/user-output'
 import { UserCollectionPresenter, UserPresenter } from './presenters/user.presenter'
+import { instanceToPlain } from 'class-transformer'
 
 @Controller('users')
 export class UsersController {
@@ -54,7 +55,7 @@ export class UsersController {
   }
 
   static listUsersToResponse(output: ListUsersUseCase.Output){
-    return new UserCollectionPresenter(output)
+    return instanceToPlain(new UserCollectionPresenter(output))
   }
 
   @Post()
