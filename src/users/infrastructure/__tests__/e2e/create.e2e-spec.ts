@@ -50,15 +50,12 @@ describe('UsersController e2e tests', () => {
         .send(signupDto)
         .expect(201)
         expect(Object.keys(res.body)).toStrictEqual([
-          'id',
-          'name',
-          'email',
-          'createdAt'
+          'data'
         ])
-        const user = await repository.findById(res.body.id)
+        const user = await repository.findById(res.body.data.id)
         const presenter = UsersController.userToResponse(user.toJSON())
         const serialized = instanceToPlain(presenter)
-        expect(res.body).toStrictEqual(serialized)
+        expect(res.body.data).toStrictEqual(serialized)
       })
     })
   })
