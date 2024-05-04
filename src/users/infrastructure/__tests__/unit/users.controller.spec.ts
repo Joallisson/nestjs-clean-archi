@@ -140,7 +140,7 @@ describe('UsersController unit tests', () => {
       perPage: 1
     }
     const presenter = await sut.search(searchParams)
-    expect(presenter).toBeInstanceOf(UserPresenter);
+    expect(presenter).toBeInstanceOf(UserCollectionPresenter);
     expect(presenter).toEqual(new UserCollectionPresenter(output));
     expect(mockListUsersUseCase.execute).toHaveBeenCalledWith(searchParams)
   });

@@ -55,7 +55,7 @@ export class UsersController {
   }
 
   static listUsersToResponse(output: ListUsersUseCase.Output){
-    return instanceToPlain(new UserCollectionPresenter(output))
+    return new UserCollectionPresenter(output)
   }
 
   @Post()
