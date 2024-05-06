@@ -131,9 +131,13 @@ describe('UsersController e2e tests', () => {
         await repository.insert(entity)
         const res = await request(app.getHttpServer())
         .post('/users')
-        .send(Object.assign(signupDto, {xpto: 'fake'}))
+        .send(signupDto)
         .expect(409)
-        console.log(res.body)
+        .expect({
+          statusCode: 409,
+          error: 'Conflict',
+          message: 'email address already used'
+        })
       })
     })
   })
