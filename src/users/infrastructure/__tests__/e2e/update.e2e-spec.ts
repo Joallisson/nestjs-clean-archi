@@ -72,18 +72,30 @@ describe('UsersController e2e tests', () => {
         ])
       })
 
-      // it('should return a error 422 code when the name field is invalid', async () => {
-      //   delete signupDto.name
-      //   const res = await request(app.getHttpServer())
-      //   .post('/users')
-      //   .send(signupDto)
-      //   .expect(422)
-      //   expect(res.body.error).toBe('Unprocessable Entity')
-      //   expect(res.body.message).toEqual([
-      //     'name should not be empty',
-      //     'name must be a string',
-      //   ])
-      // })
+      it('should return a error 422 code when the name field is invalid', async () => {
+        delete updateUserDto.name
+        const res = await request(app.getHttpServer())
+        .put(`/users/${entity._id}`)
+        .send(updateUserDto)
+        .expect(422)
+        expect(res.body.error).toBe('Unprocessable Entity')
+        expect(res.body.message).toEqual([
+          'name should not be empty',
+          'name must be a string',
+        ])
+      })
+
+      it('should return a error 404 code when throw NotFoundError with invalid id', async () => {
+        const res = await request(app.getHttpServer())
+        .put(`/users/fakeId`)
+        .send(updateUserDto)
+        .expect(404)
+        .expect({
+          statusCode: 404,
+          error: 'Not Found',
+          message: 'UserModel not found using ID fakeId'
+        })
+      })
 
       // it('should return a error 422 code when the email field is invalid', async () => {
       //   delete signupDto.email
