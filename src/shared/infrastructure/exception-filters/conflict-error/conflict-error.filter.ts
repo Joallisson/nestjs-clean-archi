@@ -1,4 +1,4 @@
-import { ConflictError } from '@/shared/domain/errors/conflict-error copy'
+import { ConflictError } from '@/shared/domain/errors/conflict-error'
 import { ArgumentsHost, Catch, ExceptionFilter } from '@nestjs/common'
 import {FastifyReply} from 'fastify'
 
