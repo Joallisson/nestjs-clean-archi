@@ -4,7 +4,7 @@ import { UserEntity } from "@/users/domain/entities/user.entity";
 import { UserRepository } from "@/users/domain/repositories/user.repository";
 import { UserModelMapper } from "../models/user-model.mapper";
 import { contains } from "class-validator";
-import { ConflictError } from "@/shared/domain/errors/conflict-error copy";
+import { ConflictError } from "@/shared/domain/errors/conflict-error";
 
 export class UserPrismaRepository implements UserRepository.Repository{
   sortableFields: string[] = ['name', 'createdAt'];
