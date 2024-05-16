@@ -13,4 +13,10 @@ export class EnvConfigService implements EnvConfig {
     return this.configService.get<string>('NODE_ENV')
   }
 
+  getJwtSecret(): string {
+    return this.configService.get<string>('JWT_SECRET')
+  }
+  getJwtExpireInSeconds(): number {
+    return Number(this.configService.get<number>('JWT_EXPERIES_IN'))
+  }
 }
