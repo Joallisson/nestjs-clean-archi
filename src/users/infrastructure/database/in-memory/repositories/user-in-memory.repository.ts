@@ -1,4 +1,4 @@
-import { ConflictError } from '@/shared/domain/errors/conflict-error copy'
+import { ConflictError } from '@/shared/domain/errors/conflict-error'
 import { NotFoundError } from '@/shared/domain/errors/not-found-error'
 import { InMemorySearchableRepository } from '@/shared/domain/repositories/in-memory-searchable.repository'
 import { UserEntity } from '@/users/domain/entities/user.entity'
