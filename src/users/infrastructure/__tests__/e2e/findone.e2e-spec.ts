@@ -55,7 +55,7 @@ describe('UsersController e2e tests', () => {
       .send({email: 'a@a.com', password: '1234'})
       .expect(200)
 
-      accessToken = loginResponse.body.accessToken
+    accessToken = loginResponse.body.accessToken
   });
 
   describe('GET /users/:id', () => {
