@@ -19,8 +19,8 @@ describe('UsersController e2e tests', () => {
   let app: INestApplication
   let module: TestingModule
   let repository: UserRepository.Repository
-  const prismaService = new PrismaClient()
   let entity: UserEntity
+  const prismaService = new PrismaClient()
   let hashProvider: HashProvider
   let hashPassword: string
   let accessToken: string
