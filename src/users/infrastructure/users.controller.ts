@@ -65,6 +65,14 @@ export class UsersController {
     return new UserCollectionPresenter(output)
   }
 
+  @ApiResponse({
+    status: 409,
+    description: 'Conflito de email',
+  })
+  @ApiResponse({
+    status: 422,
+    description: 'Corpo da requisição com dados inválidos',
+  })
   @Post()
   async create(@Body() signupDto: SignupDto) {
     const output = await this.signupUseCase.execute(signupDto)
