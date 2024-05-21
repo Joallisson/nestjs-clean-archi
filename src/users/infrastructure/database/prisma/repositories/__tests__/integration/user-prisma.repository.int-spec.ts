@@ -7,7 +7,7 @@ import { NotFoundError } from "@/shared/domain/errors/not-found-error"
 import { UserEntity } from "@/users/domain/entities/user.entity"
 import { UserDataBuilder } from "@/users/domain/testing/helpers/user-data-builder"
 import { UserRepository } from "@/users/domain/repositories/user.repository"
-import { ConflictError } from "@/shared/domain/errors/conflict-error copy"
+import { ConflictError } from "@/shared/domain/errors/conflict-error"
 
 describe('UserPrismarepository integration tests', () => {
   const prismaService = new PrismaClient()

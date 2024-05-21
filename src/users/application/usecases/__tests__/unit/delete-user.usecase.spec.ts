@@ -1,4 +1,4 @@
-import { UserInMemoryRepository } from "@/users/infrastructure/database/repositories/user-in-memory.repository"
+import { UserInMemoryRepository } from "@/users/infrastructure/database/in-memory/repositories/user-in-memory.repository"
 import { NotFoundError } from "@/shared/domain/errors/not-found-error"
 import { UserEntity } from "@/users/domain/entities/user.entity"
 import { UserDataBuilder } from "@/users/domain/testing/helpers/user-data-builder"

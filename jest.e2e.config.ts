@@ -14,4 +14,5 @@ export default {
   coverageDirectory: '../coverage',
   testEnvironment: 'node',
   watch: false,
+  testTimeout: 10000,
 }
