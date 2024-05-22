@@ -13,17 +13,14 @@ RUN npm install
 # Copie o restante do código da aplicação para o diretório de trabalho
 COPY . .
 
+# Gere os artefatos do Prisma
+RUN npx prisma generate --schema ./src/shared/infrastructure/database/prisma/schema.prisma
+
 # Compile a aplicação NestJS
 RUN npm run build
-
-# Gere os artefatos do Prisma e execute as migrações
-# RUN npx prisma generate --schema ./src/shared/infrastructure/database/prisma/schema.prisma
-# RUN npx prisma migrate deploy --schema ./src/shared/infrastructure/database/prisma/schema.prisma
 
 # Informe ao Docker que a aplicação escuta na porta 3000
 EXPOSE 3000
 
 # Comando para rodar a aplicação NestJS
-CMD npx prisma generate --schema ./src/shared/infrastructure/database/prisma/schema.prisma \
-    && npx prisma migrate deploy --schema ./src/shared/infrastructure/database/prisma/schema.prisma \
-    && npm run start:prod
+CMD npx prisma migrate deploy --schema ./src/shared/infrastructure/database/prisma/schema.prisma && npm run start:prod
