@@ -2,7 +2,9 @@ version: '3.1'
 
 services:
   db:
-    build: .
+    build:
+      context: ./postgres  # Diretório que contém o Dockerfile
+      dockerfile: Dockerfile  # Nome do Dockerfile
     container_name: api-db
     restart: always
     tty: true

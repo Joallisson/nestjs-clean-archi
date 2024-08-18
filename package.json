@@ -42,6 +42,7 @@
     "class-validator": "^0.14.0",
     "dotenv-cli": "^7.4.1",
     "fastify-swagger": "^5.2.0",
+    "nestjs-clean-arch": "file:",
     "reflect-metadata": "^0.1.13",
     "rxjs": "^7.8.1",
     "uuid": "^9.0.0"

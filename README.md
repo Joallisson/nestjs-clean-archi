@@ -71,3 +71,6 @@ Nest is an MIT-licensed open source project. It can grow thanks to the sponsors 
 ## License
 
 Nest is [MIT licensed](LICENSE).
+
+## Como funciona a url do postgres
+- postgresql://<username>:<password>@<host>:<port>/<database>?<params>
